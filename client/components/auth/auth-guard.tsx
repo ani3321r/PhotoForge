@@ -11,6 +11,7 @@ type AuthGuardProps = {
   redirectTo?: string;
 };
 
+/** Protects pages that require login. */
 export function AuthGuard({ children, redirectTo = "/login" }: AuthGuardProps) {
   const router = useRouter();
   const { isReady, isLoggedIn } = useAuth();

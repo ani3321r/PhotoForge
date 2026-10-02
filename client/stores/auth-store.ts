@@ -4,6 +4,11 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import type { AuthResponse, User } from "@/lib/api";
 
+/**
+ * Stores the logged-in user + tokens.
+ * `persist` saves them in localStorage so a page refresh keeps you logged in.
+ * `isReady` becomes true after that saved data has been loaded.
+ */
 type AuthState = {
   accessToken: string | null;
   refreshToken: string | null;
@@ -43,6 +48,7 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: "gp-auth",
+      // Noop on the server so persist still hydrates and sets isReady
       storage: createJSONStorage(() =>
         typeof window === "undefined" ? noopStorage : localStorage,
       ),

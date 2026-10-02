@@ -11,10 +11,13 @@ type GuestGuardProps = {
   redirectTo?: string;
 };
 
+/** For login/register pages — redirect away if already logged in. */
 export function GuestGuard({ children, redirectTo = "/" }: GuestGuardProps) {
   const router = useRouter();
   const { isReady, isLoggedIn } = useAuth();
   const setReady = useAuthStore((state) => state.setReady);
+
+  // Persist may finish before mount — subscribe first, then check.
   useEffect(() => {
     const persistApi = useAuthStore.persist;
     if (!persistApi) {

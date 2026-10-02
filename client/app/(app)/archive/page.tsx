@@ -1,9 +1,15 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+import { PhotoLibraryView } from "@/components/photos/photo-library-view";
+
+export default function ArchivePage() {
   return (
-    <div>page</div>
-  )
+    <PhotoLibraryView
+      title="Archive"
+      description="Archived photos are hidden from your main library"
+      status="ARCHIVE"
+      emptyTitle="Archive is empty"
+      emptyDescription="Photos you archive will appear here. You can restore them anytime."
+    />
+  );
 }
-
-export default page

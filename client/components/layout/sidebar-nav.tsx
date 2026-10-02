@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useLogout } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
-// import { StorageWidget } from "@/components/library/storage-widget";
+import { StorageWidget } from "@/components/library/storage-widget";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { Spinner } from "@/components/ui/spinner";
 import type { User } from "@/lib/api";
@@ -70,7 +70,7 @@ export function SidebarNav({ user, onNavigate }: SidebarNavProps) {
       </nav>
 
       <div className="mt-auto space-y-3 border-t border-sidebar-border px-3 py-4">
-        {/* <StorageWidget /> */}
+        <StorageWidget />
 
         {user && (
           <div className="rounded-xl bg-sidebar-accent/40 px-3 py-2.5">

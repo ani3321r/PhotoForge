@@ -10,14 +10,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="absolute right-4 top-4">
           <ModeToggle />
         </div>
+
         <div className="mb-8 text-center">
           <Link href="/" className="text-2xl font-semibold tracking-tight text-foreground">
             PhotoForge
           </Link>
           <p className="mt-2 text-sm text-muted-foreground">
-            Store, organize, and edit your Photos
+            Store, organize, and edit your memories
           </p>
         </div>
+
         <Card className="w-full max-w-md border-border/60 bg-card/80 backdrop-blur-sm">
           <CardContent className="pt-6">{children}</CardContent>
         </Card>

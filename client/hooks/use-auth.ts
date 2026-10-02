@@ -3,12 +3,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import {api} from "@/lib/api"
-
-import type { LoginFormValues, RegisterFormValues } from "@/lib/validations/auth";
-
+import { api } from "@/lib/api";
 import { authKeys } from "@/lib/query-keys";
+import type { LoginFormValues, RegisterFormValues } from "@/lib/validations/auth";
 import { useAuthStore } from "@/stores/auth-store";
+
 
 export function useCurrentUser() {
     const accessToken = useAuthStore((state) => state.accessToken);
@@ -23,7 +22,8 @@ export function useCurrentUser() {
     });
   }
 
-  export function useLogin() {
+  /** Login → save tokens → go to /photos */
+export function useLogin() {
     const router = useRouter();
     const queryClient = useQueryClient();
     const setAuth = useAuthStore((state) => state.setAuth);
@@ -39,6 +39,7 @@ export function useCurrentUser() {
     });
   }
   
+  /** Register → save tokens → go to /photos */
   export function useRegister() {
     const router = useRouter();
     const queryClient = useQueryClient();
@@ -54,7 +55,8 @@ export function useCurrentUser() {
       },
     });
   }
-
+  
+  /** Logout → clear tokens → go to /login */
   export function useLogout() {
     const router = useRouter();
     const queryClient = useQueryClient();
